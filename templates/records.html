@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance Records{% endblock %}
+
+{% block content %}
+
+<section class="home">
+
+    <h2 class="text">Attendance Records</h2>
+
+    <div class="card-post">
+        <form method="POST" action="/records">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+            <div class="form-row">
+
+                <div>
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate" name="startDate" value="{{ start_date }}">
+
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate" name="endDate" value="{{ end_date }}">
+                </div>
+
+                <div class="user-dropdown">
+                    <label>
+                        Select Users:
+                        <input type="text" id="userSearch" placeholder="Type to search users..." autocomplete="off">
+                    </label>
+
+                    <div id="userOptions" class="userOptions">
+                        {% for u in users %}
+                        <div class="option">
+                            <input type="checkbox" name="userids" value="{{ u.userid }}" {% if u.userid in
+                                selected_users %}checked{% endif %}>
+                            <span>{{ u.name }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="selected-tags" id="selectedTags"></div>
+                </div>
+
+                <div style="align-self: flex-end;">
+                    <button type="submit">Search</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="card">
+        {% if not grouped_records %}
+        <p class="no-record">Record Not Found!</p>
+        {% else %}
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        {% for field, header in display_fields %}
+                        <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user_name, records in grouped_records.items() %}
+                    {% for record in records %}
+                    <tr>
+                        {% if loop.first %}
+                        <td rowspan="{{ records|length }}">{{ user_name }}</td>
+                        {% endif %}
+                        {% for field, header in display_fields %}
+                        <td>
+                            {% if record.empty %}
+                            -
+                            {% else %}
+                            {{ record[field] }}
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+
+            </table>
+            <div class="container pagination">
+
+                {% if current_page > 1 %}
+                <a href="{{ url_for('records',
+                    page=current_page - 1,
+                    startDate=start_date,
+                    endDate=end_date,
+                    userids=selected_users
+                ) }}" class="button prevNext">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+                {% else %}
+                <button class="button prevNext" disabled>
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                {% endif %}
+
+                <div class="links">
+                    {% for i in range(1, total_pages + 1) %}
+                    {% if i >= current_page - 2 and i <= current_page + 2 %} <a href="{{ url_for('records',
+                        page=i,
+                        startDate=start_date,
+                        endDate=end_date,
+                        userids=selected_users
+                    ) }}" class="link {% if i == current_page %}active{% endif %}">
+                        {{ i }}
+                        </a>
+                        {% elif i == 1 or i == total_pages %}
+                        <a href="{{ url_for('records',
+                        page=i,
+                        startDate=start_date,
+                        endDate=end_date,
+                        userids=selected_users
+                    ) }}" class="link {% if i == current_page %}active{% endif %}">
+                            {{ i }}
+                        </a>
+                        {% elif i == current_page - 3 or i == current_page + 3 %}
+                        <span class="link">...</span>
+                        {% endif %}
+                        {% endfor %}
+                </div>
+
+                {% if current_page < total_pages %} <a href="{{ url_for('records',
+                page=current_page + 1,
+                startDate=start_date,
+                endDate=end_date,
+                userids=selected_users
+            ) }}" class="button prevNext">
+                    <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                    {% else %}
+                    <button class="button prevNext" disabled>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                    {% endif %}
+
+                    <div class="page-info">
+                        Page {{ current_page }} of {{ total_pages }}
+                    </div>
+            </div>
+            {% endif %}
+        </div>
+
+</section>
+
+{% endblock %}

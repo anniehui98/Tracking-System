@@ -1,0 +1,275 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card {
+  background: #fff;
+  width: 85%;
+  margin: 20px auto;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 1, 0.08);
+  align-items: center;
+}
+
+.dark .card {
+  background: #696969;
+  width: 85%;
+  margin: 20px auto;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(125, 116, 116, 0.08);
+}
+
+.card-post {
+  background: #fff;
+  width: 85%;
+  margin: 20px auto;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.dark .card-post {
+  background: #696969;
+
+  width: 85%;
+  margin: 20px auto;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.dark .card-post .form-row {
+  background: #696969;
+  color: #F6F5FF;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+
+}
+
+.dark .card-post .form-row .user-dropdown .userOptions .option {
+  background: #696969;
+  color: #F6F5FF;
+
+}
+
+.dark .card-post .form-row .tag {
+  background: #4169E1;
+  color: #F6F5FF;
+
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="date"],
+input[type="text"] {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.dark input[type="date"],
+.dark input[type="text"] {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #707070;
+}
+
+button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #409eff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+} */
+
+.dark button {
+  background-color: #695CFE;
+}
+
+button:hover {
+  background-color: #337ecc;
+}
+
+.user-dropdown {
+  position: relative;
+  width: 300px;
+}
+
+#userOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 4px;
+  display: none;
+  z-index: 1000;
+}
+
+#userOptions .option {
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#userOptions .option:hover {
+  background-color: #f0f2f5;
+}
+
+.dark .card-post .form-row .user-dropdown #userOptions .option:hover {
+  background-color: #454545;
+
+}
+
+.selected-tags {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  background-color: #409eff;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.tag .remove-tag {
+  margin-left: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.table-wrapper {
+  max-height: 600px;
+  overflow: auto;
+  margin-top: 15px;
+}
+
+.table-wrapper-1 {
+  max-height: auto;
+  overflow: auto;
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+th,
+td {
+  border: 1px solid #e0e0e0;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.dark th,
+.dark td {
+  border: 1px solid #A9A9A9;
+  padding: 8px;
+  text-align: center;
+}
+
+.dark th {
+  background-color: #EFEFEF;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  color: #808080;
+}
+
+.dark td {
+  color: #FFF;
+}
+
+tr {
+  /* #D3D3D3 LightGray */
+  border-bottom: 2pt solid #D3D3D3;
+}
+
+.dark tr {
+  border-bottom: 2pt solid #A9A9A9;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+tr.empty {
+  color: #999;
+}
+
+.dark tr:nth-child(even) {
+  background-color: #838383;
+}
+
+.no-record {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+.dark .no-record {
+  text-align: center;
+  color: #e0e0e0;
+  padding: 20px;
+}

@@ -1,0 +1,94 @@
+<nav id="sidebar" class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <img src="{{ url_for('static', filename='img/leave_logo.png') }}">
+            </span>
+
+            <div class="text header-text">
+                <span class="name">Tracking</span>
+                <span class="profession">System</span>
+            </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <li class="search-box">
+                <i class="bx bx-search icon"></i>
+                <input type="search" class="search" placeholder="Search...">
+            </li>
+            <ul class="menu-links">
+                <!-- <li class="nav-link">
+                    <a href="/test">
+                        <i class="bx bx-home-alt icon"></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li> -->
+                <li class="nav-link">
+                    <a href="/records">
+                        <i class="bx bx-clipboard-detail icon"></i>
+                        <span class="text nav-text">Attendance</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-link">
+                    <a href="/frp-data">
+                        <i class="bx bx-pie-chart-alt-2 icon"></i>
+                        <span class="text nav-text">FRP Data</span>
+                    </a>
+                </li> -->
+
+
+                <!-- <li class="nav-link has-submenu">
+                    <a href="#" class="submenu-toggle">
+                        <i class="bx bx-pie-chart-alt-2 icon"></i>
+                        <span class="text nav-text">FRP</span>
+                        <i class="bx bx-chevron-down arrow"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li><a href="/frp-data">All Data</a></li>
+                        <li><a href="/frp-data/report">Reports</a></li>
+                        <li><a href="/frp-data/analytics">Analytics</a></li>
+                    </ul>
+                </li> -->
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class="bx bx-cog icon"></i>
+                        <span class="text nav-text">Settings</span>
+                    </a>
+                </li> -->
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class="bx bx-message-circle-question-mark icon"></i>
+                        <span class="text nav-text">Help</span>
+                    </a>
+                </li> -->
+            </ul>
+
+        </div>
+        <div class="bottom-content">
+            <!-- <li class="">
+                <a href="#">
+                    <i class="bx bx-arrow-out-left-square-half icon"></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </li> -->
+
+            <li class="mode">
+                <div class="moon-sun">
+                    <i class="bx bx-moon icon moon"></i>
+                    <i class="bx bx-sun icon sun"></i>
+                </div>
+                <span class="mode-text text">Dark Mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>
