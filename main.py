@@ -40,7 +40,7 @@ def get_paginated_items(items,page_num,per_page):
     return items[start_index:end_index]
 
 
-@app.route('/records', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def records():
 
     today_str = date.today().strftime('%Y-%m-%d')
