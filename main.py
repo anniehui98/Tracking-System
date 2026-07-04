@@ -54,6 +54,7 @@ def records():
 
     user_list_resp = UserAPI().get_user()
     users = user_list_resp['result']['list']
+    print(users)
 
     if not selected_users and users:
         selected_users = [users[13]['userid'],users[11]['userid']]
