@@ -4,20 +4,23 @@ import math , os
 from flask import Flask, render_template, request,jsonify
 from dingtalk import UserAPI,RecordAPI,init_token_manager
 from datehelper import FormatAPI
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
 app= Flask(__name__)
 
-
+load_dotenv()
 
 """
 initial app_key and app_secret to get access token
 """
-secrets = dotenv_values(".env")
 
 
-app_key = secrets["APP_KEY"]
-app_secret = secrets["APP_SECRET"]
+app_key = os.getenv("APP_KEY")
+app_secret = os.getenv("APP_SECRET")
+
+if not app_key or not app_secret:
+    raise RuntimeError("APP_KEY or APP_SECRET is missing.")
+
 
 init_token = init_token_manager(app_key,app_secret)
 
