@@ -53,8 +53,13 @@ def records():
     selected_users = request.args.getlist('userids') or request.form.getlist('userids')
 
     user_list_resp = UserAPI().get_user()
-    users = user_list_resp['result']['list']
-    print(users)
+    # users = user_list_resp['result']['list']
+    
+    if 'result' not in user_list_resp:
+            print("API异常返回:", user_list_resp)
+            return "API error", 500
+    
+    users = user_list_resp['result'].get('list', [])
 
     if not selected_users and users:
         selected_users = [users[13]['userid'],users[11]['userid']]
