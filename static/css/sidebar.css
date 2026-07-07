@@ -390,3 +390,70 @@
      color: #fff;
      padding-left: 6px;
  }
+
+/* ===========================
+   Mobile (<=768px)
+=========================== */
+@media screen and (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* Sidebar default hide */
+    .sidebar{
+        left:-250px;
+        width:250px;
+        transition:0.35s;
+        box-shadow:0 0 15px rgba(0,0,0,.2);
+    }
+
+    /* open Sidebar */
+    .sidebar.show{
+        left:0;
+    }
+
+    /* Home size */
+    .home{
+        left:0;
+        width:100%;
+    }
+
+    .sidebar.close~.home{
+        left:0;
+        width:100%;
+    }
+
+    /* smallest font */
+    .home .text{
+        font-size:22px;
+        padding:15px;
+    }
+
+    .sidebar li{
+        height:46px;
+    }
+
+    .site-nav{
+        padding:12px 15px;
+    }
+
+    .submenu{
+        padding-left:35px;
+    }
+
+    .submenu li a{
+        font-size:13px;
+    }
+
+    /* Toggle button put at left upside */
+    .sidebar header .toggle{
+        right:-45px;
+        top:20px;
+        transform:none;
+    }
+
+    .sidebar.show header .toggle{
+        right:15px;
+    }
+}
