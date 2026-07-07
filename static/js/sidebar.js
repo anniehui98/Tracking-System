@@ -16,11 +16,22 @@ if (sidebarState === "closed") {
 
 // Toggle button
 toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
+    if (window.innerWidth <= 768) {
+        // phone
+        sidebar.classList.toggle("show");
+    } else {
+        // pc
+        sidebar.classList.toggle("close");
 
-    // Save new state
-    const state = sidebar.classList.contains("close") ? "closed" : "open";
-    localStorage.setItem("sidebar", state);
+        // remember state
+        const state = sidebar.classList.contains("close") ? "closed" : "open";
+        localStorage.setItem("sidebar", state);
+    }
+    // sidebar.classList.toggle("close");
+
+    // // Save new state
+    // const state = sidebar.classList.contains("close") ? "closed" : "open";
+    // localStorage.setItem("sidebar", state);
 });
 /* sidebar search button function */
 searchBtn.addEventListener("click", () => {
