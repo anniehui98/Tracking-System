@@ -56,13 +56,13 @@ def records():
     # users = user_list_resp['result']['list']
     
     if 'result' not in user_list_resp:
-            print("API异常返回:", user_list_resp)
+            print("API error:", user_list_resp)
             return "API error", 500
     
     users = user_list_resp['result'].get('list', [])
 
     if not selected_users and users:
-        selected_users = [users[13]['userid'],users[11]['userid']]
+        selected_users = [users[14]['userid'],users[12]['userid']]
     all_records = []
 
     for user_id in selected_users:
